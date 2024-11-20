@@ -1,9 +1,10 @@
-export default function Main(){
+export default function Main(props){
 
+    const {data} = props;
     return(
         <>
             <main className="imgContainer">
-                <img src="mars.png" alt="Picture of the red planet, the planet for the King Elon." />
+                <img src={data.url} alt={data.title}/>
             </main>
         </>
     )
