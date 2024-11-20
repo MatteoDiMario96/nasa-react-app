@@ -4,7 +4,7 @@
 
 "Use the NASA API for the Astronomical Picture Of Day. Read the title, watch the picture and if you want you can purchase a description of the picture."
 
-## Funzionalità 
+## Functionality 
 
 - Take NASA API: Take thanks at unique_key and fetch in the application.
 - Use of a Modal: If you press the information button, a modal become.
