@@ -53,7 +53,7 @@ footer div {
 }
 
 footer h2 {
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 
 footer h1 {
@@ -69,10 +69,17 @@ footer button {
   padding: 1rem;
   transition-duration: 200ms;
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 footer button i {
-  font-size: 1.3rem;
+  font-size: 3rem;
+
+}
+
+.footer-button{
+  display: flex;
+  flex-direction: row;
 }
 
 footer button:hover {
@@ -106,6 +113,13 @@ footer button:hover {
   height: 100%;
   opacity: .6;
 }
+
+.sidebarContents{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .sidebar h2{
   padding: 1rem 0;
   font-weight: 300;
@@ -124,6 +138,83 @@ line-height: 1.5rem;
 font-weight: 400;
 color: white;
 } 
+
+.div-button{
+  align-self: flex-end;
+}
+
+
+.button-sidebar{
+  padding: .5rem;
+  border-radius: .7rem;
+  border: transparent;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+
+.button-sidebar:hover{
+  opacity: .7;
+}
+
+
+.button-sidebar i {
+  font-size: 1.3rem;
+}
+
+.date-sidebar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button-dateSidebar{
+  padding: .2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  flex: 1 1 30%; /* Imposta una base per ciascun pulsante, in modo che occupi il 30% del contenitore */
+  margin: 5px; /* Aggiungi un po' di spazio tra i pulsanti */
+  min-width: 130px; /* Imposta una larghezza minima per ogni pulsante */
+  text-align: center; /* Centra il testo all'interno del pulsante */
+}
+
+.div-buttonDate{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.div-returnSidebar{
+  align-self: flex-end;
+}
+
+.button-returnSidebar{
+  margin-top: 10rem;
+  margin-right: .5rem;
+}
+
+
+.loadingState{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.loadingState i{
+  opacity: .4;
+  font-size: 7rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
 
 @media  (min-width: 687px) {
   .sidebar{
