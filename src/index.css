@@ -175,6 +175,14 @@ color: white;
   margin: 5px; /* Aggiungi un po' di spazio tra i pulsanti */
   min-width: 130px; /* Imposta una larghezza minima per ogni pulsante */
   text-align: center; /* Centra il testo all'interno del pulsante */
+  margin-top: .8rem;
+  border-radius: .7rem;
+  border: transparent;
+  cursor: pointer;
+}
+
+.button-dateSidebar:hover{
+  opacity: .6;
 }
 
 .div-buttonDate{
@@ -190,6 +198,19 @@ color: white;
 .button-returnSidebar{
   margin-top: 10rem;
   margin-right: .5rem;
+}
+
+.active{
+  background-color:  greenyellow;
+  border-radius: .7rem;
+  border: transparent;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+
+.active:hover{
+  opacity: 1;
+  cursor: default;
 }
 
 
