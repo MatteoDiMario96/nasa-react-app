@@ -1,6 +1,8 @@
 export default function DateSideBar(props) {
 
-    const { dateData, handleToggleModalDate } = props;
+    const { data, dateData, handleToggleModalDate, onDateClick } = props;
+
+    const reversedDateData = dateData.slice().reverse();
     return (
         <>
             <div className="sidebar date-sidebar">
@@ -11,8 +13,10 @@ export default function DateSideBar(props) {
                     </h3>
 
 
-                    {dateData.map((item, index) => (
-                        <button className="button-dateSidebar" key={index}>{item.date}</button>
+                    {reversedDateData.map((item, index) => (
+                        <button className={`button-dateSidebar ${item.date === data.date ? 'active' : ''}`} key={index}
+                        onClick={() => onDateClick(item)}
+                        >{item.date}</button>
                     ))}
                 </div>
                 <div className="div-returnSidebar">
