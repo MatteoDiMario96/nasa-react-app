@@ -18,7 +18,7 @@ export default function SideBar(props) {
                         </div>
                     </div>
                     <div className="div-button">
-                        <button className="button-sidebar" onClick={handleToggleModal}>
+                        <button className="button-sidebar button-returnSidebar" onClick={handleToggleModal}>
                             <i className="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
