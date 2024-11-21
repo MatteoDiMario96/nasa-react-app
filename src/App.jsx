@@ -7,21 +7,17 @@ import DateSideBar from "./assets/components/DateSideBar";
 
 function App() {
 
-  const timeElapsed = Date.now();
   const today = new Date();
 
   function formatDate(date, format) {
     const formatMap = {
-      mm: (date.getMonth() + 1).toString(), 
-      dd: date.getDate().toString(),       
-      yyyy: date.getFullYear()                              
+      mm: (date.getMonth() + 1).toString(),
+      dd: date.getDate().toString(),
+      yyyy: date.getFullYear()
     };
-  
     // Sostituzione basata sul formato
     return format.replace(/mm|dd|yyyy/gi, matched => formatMap[matched]);
   }
-
-  console.log(formatDate(today, 'yyyy-mm-dd'));
 
   const [dateData, setDateData] = useState([]);
 
@@ -47,22 +43,51 @@ function App() {
       : null;
   }
 
+  function handleDateChange(selectedDate) {
+    setData(selectedDate); 
+    localStorage.setItem('lastViewedKey', JSON.stringify(selectedDate));
+    console.log(`Date changed: ${selectedDate.date}`)
+    console.log(selectedDate);
+  }
+  
+
+
+
 
   useEffect(() => {
     async function fetchApiData() {
       const url = "https://api.nasa.gov/planetary/apod";
       const API_KEY = import.meta.env.VITE_API_KEY_NASA;
       const urlApiKey = `${url}?start_date=2024-09-16&api_key=${API_KEY}`
-      console.log(API_KEY);
+      const todayStringed = (new Date()).toDateString()
+      const localKey = `NASA-DATE-OBJ`
+      if(localStorage.getItem('lastViewedKey') && JSON.parse(localStorage.getItem(localKey))){
+        const apiDatalast = JSON.parse(localStorage.getItem('lastViewedKey'))
+        const apiData = JSON.parse(localStorage.getItem(localKey))
+        setDateData(apiData);
+        setData(apiDatalast);
+        console.log('Fetched last view from cache today yesss')
+        return
+      }
+      else if (localStorage.getItem(localKey)) {
+        const apiData = JSON.parse(localStorage.getItem(localKey))
+        const lastInJson = getLastElement(apiData)
+        setDateData(apiData);
+        setData(lastInJson);
+        console.log('Fetched from cache today yesss')
+        return
+      }
+      localStorage.clear()
       try {
         const response = await fetch(urlApiKey);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`)
-        }
+        const apiData = await response.json();
+        localStorage.setItem(localKey, JSON.stringify(apiData))
+        console.log('Fetched from API today')
 
-        const json = await response.json();
-        const lastInJson = getLastElement(json)
+        const lastInJson = getLastElement(apiData)
+        setDateData(apiData);
         setData(lastInJson);
+        localStorage.setItem('lastViewedKey', JSON.stringify(lastInJson));
         console.log("Data:\n", lastInJson);
 
       }
@@ -73,29 +98,6 @@ function App() {
     fetchApiData();
   }, [])
 
-  useEffect(() => {
-    async function fetchApiData() {
-      const url = "https://api.nasa.gov/planetary/apod";
-      const API_KEY = import.meta.env.VITE_API_KEY_NASA;
-      const urlApiKey = `${url}?start_date=2024-09-16&api_key=${API_KEY}`
-      console.log(API_KEY);
-      try {
-        const response = await fetch(urlApiKey);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`)
-        }
-
-        const json = await response.json();
-        setDateData(json);
-        console.log("Data:\n", json);
-
-      }
-      catch (error) {
-        console.error(error.message);
-      }
-    }
-    fetchApiData();
-  }, [])
 
 
   return (
@@ -110,7 +112,7 @@ function App() {
       )}
 
       {showModalDate && (
-        <DateSideBar dateData={dateData} handleToggleModalDate={handleToggleModalDate} />)}
+        <DateSideBar  onDateClick={handleDateChange} data={data} dateData={dateData} handleToggleModalDate={handleToggleModalDate} />)}
       {data &&
         (<Footer data={data} showModal={showModal} handleToggleModal={handleToggleModal} handleToggleModalDate={handleToggleModalDate} />)}
     </>
