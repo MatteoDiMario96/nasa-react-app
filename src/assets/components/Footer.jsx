@@ -10,12 +10,18 @@ export default function Footer(props) {
                     <h2>{data.title.toUpperCase()}</h2>
                 </div>
                 <div className="footer-button">
-                <button onClick={handleToggleModal}>
-                    <i className="fa-solid fa-circle-info"></i>
-                </button>
-                <button onClick={handleToggleModalDate}>
-                    <i class="fa-solid fa-calendar-days"></i>
-                </button>
+                    <div className="align-end">
+                        <h1>ALL APOD 2024</h1>
+                    </div>
+                    <div className="div-button-footer">
+                        <button onClick={handleToggleModal}>
+                            <i className="fa-solid fa-circle-info"></i>
+                        </button>
+                        <button onClick={handleToggleModalDate}>
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </button>
+                    </div>
+
                 </div>
             </footer>
         </>
