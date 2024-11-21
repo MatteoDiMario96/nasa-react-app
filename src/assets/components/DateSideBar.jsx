@@ -9,9 +9,11 @@ export default function DateSideBar(props) {
             <div className="bgOverlay" onClick={handleToggleModalDate} ></div>
                 <div className="div-buttonDate">
                     <h3>
-                        Change the date and see the picture of the date
+                        Change the date and see the picture
                     </h3>
-
+                    <h3>
+                        You can change from {'today'.toUpperCase()} to 2024-01-01
+                    </h3>
 
                     {reversedDateData.map((item, index) => (
                         <button className={`button-dateSidebar ${item.date === data.date ? 'active' : ''}`} key={index}
