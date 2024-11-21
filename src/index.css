@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-#root{
+#root {
   height: 100vh;
   overflow-y: hidden;
 }
@@ -47,10 +47,7 @@ footer {
   padding: 1rem;
 }
 
-footer div {
-  display: flex;
-  flex-direction: column;
-}
+.footer-button {}
 
 footer h2 {
   font-size: 2rem;
@@ -66,24 +63,41 @@ footer button {
   border: none;
   outline: none;
   color: white;
-  padding: 1rem;
+  padding-left: .5;
   transition-duration: 200ms;
   cursor: pointer;
+}
+
+.fa-circle-info {
   margin-right: 2rem;
 }
 
 footer button i {
   font-size: 3rem;
-
 }
 
-.footer-button{
+
+
+.footer-button {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-right: 2rem;
+}
+
+.align-end {
+  align-self: flex-end;
 }
 
 footer button:hover {
   opacity: 0.7;
+}
+
+.div-button-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .4rem 0;
 }
 
 .bgGradient {
@@ -93,7 +107,7 @@ footer button:hover {
   background: linear-gradient(to top, #030615, rgba(255, 255, 255, 0));
 }
 
-.sidebar{
+.sidebar {
   position: fixed;
   top: 0;
   right: 0;
@@ -105,7 +119,7 @@ footer button:hover {
   z-index: 2;
 }
 
-.bgOverlay{
+.bgOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -114,37 +128,38 @@ footer button:hover {
   opacity: .6;
 }
 
-.sidebarContents{
+.sidebarContents {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.sidebar h2{
+
+.sidebar h2 {
   padding: 1rem 0;
   font-weight: 300;
   font-size: 2rem;
   color: #b9b9b9;
 }
 
-.sidebar h3{
+.sidebar h3 {
   padding: 1rem 0;
   font-weight: 200;
   font-size: 1rem;
-} 
+}
 
-.sidebar p{
-line-height: 1.5rem;
-font-weight: 400;
-color: white;
-} 
+.sidebar p {
+  line-height: 1.5rem;
+  font-weight: 400;
+  color: white;
+}
 
-.div-button{
+.div-button {
   align-self: flex-end;
 }
 
 
-.button-sidebar{
+.button-sidebar {
   padding: .5rem;
   border-radius: .7rem;
   border: transparent;
@@ -152,7 +167,7 @@ color: white;
   transition-duration: 200ms;
 }
 
-.button-sidebar:hover{
+.button-sidebar:hover {
   opacity: .7;
 }
 
@@ -161,60 +176,64 @@ color: white;
   font-size: 1.3rem;
 }
 
-.date-sidebar{
+.date-sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.button-dateSidebar{
+.button-dateSidebar {
   padding: .2rem;
   font-size: 1rem;
   font-weight: 600;
-  flex: 1 1 30%; /* Imposta una base per ciascun pulsante, in modo che occupi il 30% del contenitore */
-  margin: 5px; /* Aggiungi un po' di spazio tra i pulsanti */
-  min-width: 130px; /* Imposta una larghezza minima per ogni pulsante */
-  text-align: center; /* Centra il testo all'interno del pulsante */
+  flex: 1 1 30%;
+  /* Imposta una base per ciascun pulsante, in modo che occupi il 30% del contenitore */
+  margin: 5px;
+  /* Aggiungi un po' di spazio tra i pulsanti */
+  min-width: 130px;
+  /* Imposta una larghezza minima per ogni pulsante */
+  text-align: center;
+  /* Centra il testo all'interno del pulsante */
   margin-top: .8rem;
   border-radius: .7rem;
   border: transparent;
   cursor: pointer;
 }
 
-.button-dateSidebar:hover{
+.button-dateSidebar:hover {
   opacity: .6;
 }
 
-.div-buttonDate{
+.div-buttonDate {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.div-returnSidebar{
+.div-returnSidebar {
   align-self: flex-end;
 }
 
-.button-returnSidebar{
+.button-returnSidebar {
   margin-top: 10rem;
   margin-right: .5rem;
 }
 
-.active{
-  background-color:  greenyellow;
+.active {
+  background-color: greenyellow;
   border-radius: .7rem;
   border: transparent;
   cursor: pointer;
   transition-duration: 200ms;
 }
 
-.active:hover{
+.active:hover {
   opacity: 1;
   cursor: default;
 }
 
 
-.loadingState{
+.loadingState {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -222,27 +241,28 @@ color: white;
   flex: 1;
 }
 
-.loadingState i{
+.loadingState i {
   opacity: .4;
   font-size: 7rem;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from{
+  from {
     transform: rotate(0deg);
   }
-  to{
+
+  to {
     transform: rotate(360deg);
   }
 }
 
-@media  (min-width: 687px) {
-  .sidebar{
+@media (min-width: 687px) {
+  .sidebar {
     width: 30%;
   }
 
-  .bgOverlay{
+  .bgOverlay {
     width: 70%;
   }
 }
