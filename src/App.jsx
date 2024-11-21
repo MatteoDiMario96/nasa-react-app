@@ -7,8 +7,6 @@ import DateSideBar from "./assets/components/DateSideBar";
 
 function App() {
 
-  const today = new Date();
-
   function formatDate(date, format) {
     const formatMap = {
       mm: (date.getMonth() + 1).toString(),
@@ -58,9 +56,9 @@ function App() {
     async function fetchApiData() {
       const url = "https://api.nasa.gov/planetary/apod";
       const API_KEY = import.meta.env.VITE_API_KEY_NASA;
-      const urlApiKey = `${url}?start_date=2024-09-16&api_key=${API_KEY}`
+      const urlApiKey = `${url}?start_date=2024-01-01&api_key=${API_KEY}`
       const todayStringed = (new Date()).toDateString()
-      const localKey = `NASA-DATE-OBJ`
+      const localKey = `NASA-${todayStringed}`;
       if(localStorage.getItem('lastViewedKey') && JSON.parse(localStorage.getItem(localKey))){
         const apiDatalast = JSON.parse(localStorage.getItem('lastViewedKey'))
         const apiData = JSON.parse(localStorage.getItem(localKey))
